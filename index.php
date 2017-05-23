@@ -1,8 +1,9 @@
 <?php
 session_start();
-var_dump($_SESSION);
 ?>
-<?php session_start()?>
+
+
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -12,30 +13,22 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>          
+        <title></title>
     </head>
-    <body>  
-        <div><?php if (!isset($_SESSION['USR'])){?>
-        <a href="cerrar.php">Cerrar Sesión</a>
+    <body>
+        <div><?php if(isset($_SESSION['USR'])) { ?>
+            <a href="cerrar.php">Cerrar Sesión</a>
             <?php } ?>
         </div>
-        <a href="revision.php"> Revisi&oacute;n sesi&oacute;n</a> 
-        <form>
-            
-            <div><label>Usuario</label><imput type="text" name="nombre"></div>
-            <div><label>Clave</label><imput type="password" name="clave"></div>
-            <imput type="submit" value="Acceder"></imput>            
-        </form>       
-        
-        <?php
-        echo md5('#holamundo&');
-        echo '<br>';
-        echo md5('holamundo');
-        echo '<br>';
-        echo md5('HolaMundo');
-        echo '<br>';
-        echo md5('HOLA MUNDO');
-        echo '<br>';
+        <a href="revision.php">Revisi&oacute;n sesi&oacute;n</a>
+        <a href="Formulario.php">Formulario Producto</a>
+        <?php if (!isset($_SESSION['USR'])){?>
+        <form action="revision.php" method="post">
+            <div><label>Usuario<input type="text" name="nombre"></div>
+            <div><label>Clave<input type="password" name="clave"></div>
+            <input type="submit" value="Acceder">
+        </form>
+        <?php }
         ?>
     </body>
 </html>
